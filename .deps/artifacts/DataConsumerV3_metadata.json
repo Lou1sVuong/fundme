@@ -12,32 +12,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "fund",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getPrice",
+				"name": "getChainlinkDataFeedLatestAnswer",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "int256",
 						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getVersion",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
+						"type": "int256"
 					}
 				],
 				"stateMutability": "view",
@@ -53,15 +33,19 @@
 			"kind": "user",
 			"methods": {
 				"constructor": {
-					"notice": "Network: Sepolia Aggregator: ETH/USD Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306"
+					"notice": "Network: Sepolia Aggregator: BTC/USD Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43"
+				},
+				"getChainlinkDataFeedLatestAnswer()": {
+					"notice": "Returns the latest answer."
 				}
 			},
+			"notice": "If you are reading data feeds on L2 networks, you must check the latest answer from the L2 Sequencer Uptime Feed to ensure that the data is accurate in the event of an L2 sequencer outage. See the https://docs.chain.link/data-feeds/l2-sequencer-feeds page for details.",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			".deps/FundMe.sol": "FundMe"
+			".deps/FundMe.sol": "DataConsumerV3"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -76,11 +60,11 @@
 	},
 	"sources": {
 		".deps/FundMe.sol": {
-			"keccak256": "0x77bfccaea62cd336041219add548e7eb9a92af52af30c1d52bec585cf7c5354a",
+			"keccak256": "0x0b40a970e7bd3fbd36e4338ef1ba76588ea8b03c6819dd29eebdf0e6a3f92e92",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://79c64f97c13a45403e38bd0c046f521f4e288458a11b52d5074a0faa2fd16b69",
-				"dweb:/ipfs/QmXzCHFMkwnZWyZdwnwjeeGcUygnjXz8Q8ELGiJmfeMYQK"
+				"bzz-raw://3c4773c58ee79ec432630b05080b4f2f935d732eb290f28c607b8f2fd8017604",
+				"dweb:/ipfs/QmRztW5i76EfG6dg4N1YBZ4J6otD2cEJmcYCE4ugQ8Zv2F"
 			]
 		},
 		"@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": {

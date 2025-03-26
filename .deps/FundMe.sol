@@ -21,20 +21,26 @@ contract FundMe {
         );
     }
 
-    uint256 minimumUsd = 5 * 1e18;
+    uint256 minimumUsd = 2 * 1e18;
+    address[] funders;
+    mapping(address => uint256) public addressToAmountFunded;
+    mapping(address => bool) isFund;
 
-    
+   
+
+    function getFunders() public view returns (address[] memory) {
+        return funders;
+    }
 
     function getPrice() public view returns (uint256) {
         (
             ,
             /* uint80 roundID */
-            int256 answer,
+            int256 answer, /*uint startedAt*/
             ,
             ,
 
-        ) = /*uint startedAt*/
-            /*uint timeStamp*/
+        ) = /*uint timeStamp*/
             /*uint80 answeredInRound*/
             dataFeed.latestRoundData();
         return uint256(answer * 1e10);
@@ -54,11 +60,17 @@ contract FundMe {
         return dataFeed.version();
     }
 
-    function fund() public payable {
-        require(getConversionRate(msg.value) >= minimumUsd, "You need to send more value");
+     function fund() public payable {
+        require(
+            getConversionRate(msg.value) >= minimumUsd,
+            "You need to send more value"
+        );
+        if (!isFund[msg.sender]) {
+            funders.push(msg.sender);
+            isFund[msg.sender] = true;
+        }
+        addressToAmountFunded[msg.sender] += msg.value;
     }
-
-    
 
     // function withdraw() public {}
 }

@@ -13,15 +13,15 @@ import {PriceConverter} from "./PriceConverter.sol";
 
 contract FundMe {
     using PriceConverter for uint256;
-    uint256 minimumUsd = 2 * 1e18;
+    uint256 constant MINIMUM_USD = 2 * 1e18;
     address[] funders;
     mapping(address => uint256) public addressToAmountFunded;
     mapping(address => bool) isFund;
-    address public owner;
+    address immutable public i_owner;
 
 
     constructor() {
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     function getFunders() public view returns (address[] memory) {
@@ -35,7 +35,7 @@ contract FundMe {
     }
 
      function fund() public payable {
-        require(msg.value.getConversionRate() >= minimumUsd,"You need to send more value");
+        require(msg.value.getConversionRate() >= MINIMUM_USD,"You need to send more value");
         if (!isFund[msg.sender]) {
             funders.push(msg.sender);
             isFund[msg.sender] = true;
@@ -45,7 +45,7 @@ contract FundMe {
 
     function withdraw() public {
 
-        require(msg.sender == owner, "You are not the owner!");
+        require(msg.sender == i_owner, "You are not the owner!");
         
 
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){

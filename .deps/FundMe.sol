@@ -10,6 +10,7 @@ import {PriceConverter} from "./PriceConverter.sol";
 
 
 
+error NotOwner();
 
 contract FundMe {
     using PriceConverter for uint256;
@@ -43,10 +44,7 @@ contract FundMe {
         addressToAmountFunded[msg.sender] += msg.value;
     }
 
-    function withdraw() public {
-
-        require(msg.sender == i_owner, "You are not the owner!");
-        
+    function withdraw() public onlyOwner {
 
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){
             address funder = funders[funderIndex];
@@ -58,5 +56,12 @@ contract FundMe {
         funders = new address[](0);
         (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess, "failed to withdraw your funds!");
+    }
+
+    modifier onlyOwner {
+        if ( msg.sender != i_owner ){
+            revert NotOwner();
+        }
+        _;
     }
 }

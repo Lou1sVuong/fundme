@@ -51,19 +51,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "getPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "getVersion",
 				"outputs": [
 					{
@@ -103,11 +90,7 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"constructor": {
-					"notice": "Network: Sepolia Aggregator: ETH/USD Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306"
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -128,11 +111,19 @@
 	},
 	"sources": {
 		".deps/FundMe.sol": {
-			"keccak256": "0xa6beaa4ff98bd4a6c8b27609baec524becd863dd97dac5b958b18084214deb87",
+			"keccak256": "0xb92f1a5d6db0eed19a3fe01706d5373a389bfe763fe4889be8fc7cd2a691dc7f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://05283445edf6ba59f60b56a1e47c526d70652789427fc5b6ce8fd2eb11df9afe",
-				"dweb:/ipfs/QmVx932rZAgMFLCTKvYEdf4FBua91R2W2iBaASyt8GH9s8"
+				"bzz-raw://09ae0c2fa6446ac6204931a0bc15a849d2b7966f2b81fe58d766b62301091519",
+				"dweb:/ipfs/QmbcKMXTJYtAoiZiNFuESjB8rTVHC5KHZyV1iHCCyEro8M"
+			]
+		},
+		".deps/PriceConverter.sol": {
+			"keccak256": "0x086577c484e3e19061307e8ee87a7eac34b47f2d33e6da63ea4667d0f75e6f6b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://48f591daf628c68e86b2653194c3e49a51aaaa81c7b19f49653b0ab6accf6ee1",
+				"dweb:/ipfs/QmVCQKtbQdEUAqD4eb255a4Mpp4xcPEJMuYHCmUiAtWGg2"
 			]
 		},
 		"@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": {
